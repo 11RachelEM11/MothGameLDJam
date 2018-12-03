@@ -8,6 +8,8 @@ TagManager:
   - text
   - NPC2
   - NPC3
+  - NPC4
+  - NPC5
   layers:
   - Default
   - TransparentFX
