@@ -7,10 +7,15 @@ namespace UnityStandardAssets._2D
     {
         public GameObject TrashPlat;
         public GameObject M1;
+        public GameObject R1;
         public GameObject M2;
+        public GameObject R2;
         public GameObject M3;
+        public GameObject R3;
         public GameObject M4;
+        public GameObject R4;
         public GameObject M5;
+        public GameObject R5;
         public bool resText;
         [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
         [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
@@ -105,7 +110,15 @@ namespace UnityStandardAssets._2D
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
                 print("I jumped");
                 M1.transform.position = TrashPlat.transform.position;
+                R1.transform.position = TrashPlat.transform.position;
                 M2.transform.position = TrashPlat.transform.position;
+                R2.transform.position = TrashPlat.transform.position;
+                M3.transform.position = TrashPlat.transform.position;
+                R3.transform.position = TrashPlat.transform.position;
+                M4.transform.position = TrashPlat.transform.position;
+                R4.transform.position = TrashPlat.transform.position;
+                M5.transform.position = TrashPlat.transform.position;
+                R5.transform.position = TrashPlat.transform.position;
                 resText = true;
             }
         }
