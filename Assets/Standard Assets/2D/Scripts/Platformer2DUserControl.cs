@@ -19,6 +19,8 @@ namespace UnityStandardAssets._2D
         public GameObject R4;
         public GameObject M5;
         public GameObject R5;
+        public GameObject END;
+
 
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
@@ -32,6 +34,7 @@ namespace UnityStandardAssets._2D
         private bool dupText4R = false;
         private bool dupText5M = false;
         private bool dupText5R = false;
+        private bool stop = false;
 
 
         private void Awake()
@@ -42,7 +45,7 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
-            if (!m_Jump)
+            if (!m_Jump && stop == false)
             {
                 // Read the jump input in Update so button presses aren't missed.
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
@@ -52,12 +55,15 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate()
         {
-            // Read the inputs.
-            bool crouch = Input.GetKey(KeyCode.LeftControl);
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            // Pass all parameters to the character control script.
-            m_Character.Move(h, crouch, m_Jump);
-            m_Jump = false;
+            if (stop == false)
+            {   
+                // Read the inputs.
+                bool crouch = Input.GetKey(KeyCode.LeftControl);
+                float h = CrossPlatformInputManager.GetAxis("Horizontal");
+                // Pass all parameters to the character control script.
+                m_Character.Move(h, crouch, m_Jump);
+                m_Jump = false;
+            }
         }
 
         void OnTriggerEnter2D(Collider2D otherThing)
@@ -143,6 +149,17 @@ namespace UnityStandardAssets._2D
                     R5.transform.position = WinPlat.transform.position;
                     dupText5R = true;
                 }
+            }
+            if (otherThing.tag == "END")
+            {
+                Instantiate(END);
+                END.transform.position = transform.position;
+                print("End");
+                float now = transform.position.z;
+                print(now);
+                now = 15;
+               
+                
             }
         }
     }
