@@ -19,7 +19,8 @@ namespace UnityStandardAssets._2D
         public GameObject R4;
         public GameObject M5;
         public GameObject R5;
-        public GameObject END;
+        public GameObject End;
+        public GameObject endPlat;
 
 
         private PlatformerCharacter2D m_Character;
@@ -150,16 +151,11 @@ namespace UnityStandardAssets._2D
                     dupText5R = true;
                 }
             }
-            if (otherThing.tag == "END")
+            if (otherThing.tag == "END" && stop== false)
             {
-                Instantiate(END);
-                END.transform.position = transform.position;
-                print("End");
-                float now = transform.position.z;
-                print(now);
-                now = 15;
-               
-                
+                Instantiate(End);
+                End.transform.position = endPlat.transform.position;
+                stop = true;
             }
         }
     }
